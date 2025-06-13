@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+
+class AuthException extends Exception{
+public AuthException(String message)
+{
+super(message);
+}
+}
+
+class pass
+{
+private static final String uname="linto";
+private static final String pass="linto";
+public static void authenticate(String name,String pwd) throw AuthException{
+if(uname.equals(name) && pass.equals(pwd))
+{
+System.out.print("Authentication successful "+uname+" welcome....");
+}
+else{
+throw new AuthException("Authentication failed,ivalid username or password!!!!");
+}
+} 
+public static void main(String args[])
+{
+Scanner sc=new Scanner(System.in);
+String name,pwd;
+System.out.print("Enter username :");
+name=sc.nextLine();
+System.out.print("Enter password :");
+pwd=sc.nextLine();
+try{
+authenticate(name,pwd);
+}
+catch(AuthException e)
+{
+System.err.print("Error :"+e.getMessage());
+}
+}
+}
